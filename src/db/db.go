@@ -18,28 +18,51 @@ const (
 	DEFAULT_KEY			= "user_name"		//模糊查询默认查询字段
 )
 
-func InsertOrder (order *model.Order)(int64, error ){
-	if err := checkParam(order); err != nil {
-		return ZERO, err
+func InsertOrder (order *model.Order)(id int64, err error ){
+	if err = checkParam(order); err != nil {
+		return
 	}
 
-	b := SqlDB.NewRecord(order)
+	tx := SqlDB.Begin()
+	defer func() {
+		if err != nil {
+			tx.Rollback()
+		} else {
+			tx.Commit()
+		}
+	}()
+
+	// if order_id exist, delete it
+	if !tx.Where("order_id=?", order.OrderId).RecordNotFound() {
+		 if er := tx.Table("orders").Where("order_id=?", order.OrderId).Delete(&model.Order{}).Error; er != nil {
+		 	err = er
+		 	return
+		 }
+
+		 fmt.Println("order_id exist, delete success.")
+	}
+
+	b := tx.NewRecord(order)
 	if !b {
-		return ZERO, fmt.Errorf("first sqlDB.NewRecord return false. ")
+		err = fmt.Errorf("first sqlDB.NewRecord return false. ")
+		return
 	}
 
-	db := SqlDB.Create(&order)
+	db := tx.Create(&order)
 	if db.Error != nil {
-		return ZERO, db.Error
+		err = db.Error
+		return
 	}
 
-	b = SqlDB.NewRecord(order)
+	b = tx.NewRecord(order)
 	if b {
-		return ZERO, fmt.Errorf("insert order fail. ")
+		err = fmt.Errorf("insert order fail. ")
+		return
 	}
 
 	if order.Id < 1 {
-		return ZERO, fmt.Errorf("return id is:%d", order.Id)
+		err = fmt.Errorf("return id is:%d", order.Id)
+		return
 	}
 
 	return order.Id, nil
@@ -47,6 +70,11 @@ func InsertOrder (order *model.Order)(int64, error ){
 
 func UpdateOrder (order *model.Order) error {
 	if err := checkParam(order); err != nil {
+		return err
+	}
+
+	_, err := QueryByOrderId(order.OrderId)
+	if err != nil {
 		return err
 	}
 
@@ -113,6 +141,9 @@ func QueryByOrderId (orderId string) (*model.Order, error) {
 
 	order := &model.Order{}
 	db := SqlDB.Where("order_id=?", orderId).Find(&order)
+	if db.RecordNotFound() {
+		return nil, fmt.Errorf("没有查到相关信息, order_id:%s", orderId)
+	}
 	if db.Error != nil {
 		return nil, db.Error
 	}

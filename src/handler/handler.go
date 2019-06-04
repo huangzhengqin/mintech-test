@@ -52,7 +52,7 @@ func QueryByOrderId(c *gin.Context) {
 	order, err := service.QueryByOrderId(req.OrderId)
 	if err != nil {
 		fmt.Println(err)
-		c.String(http.StatusInternalServerError,"service error. ")
+		c.String(http.StatusInternalServerError,"service error:%s ", err)
 		return
 	}
 
@@ -76,7 +76,7 @@ func UpdateOrder(c *gin.Context) {
 	err := service.UpdateOrder(&req.Order)
 	if err != nil {
 		fmt.Println(err)
-		c.String(http.StatusInternalServerError,"service error. ")
+		c.String(http.StatusInternalServerError,"service error:%s ", err)
 		return
 	}
 
@@ -93,7 +93,7 @@ func Query(c *gin.Context) {
 
 	ret, err := service.QueryByCondition(&req.QueryCondition)
 	if err != nil {
-		c.String(http.StatusInternalServerError,"service error. ")
+		c.String(http.StatusInternalServerError,"service error:%s ", err)
 		return
 	}
 
