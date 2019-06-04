@@ -1,42 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87eed950-98db-46c3-979b-f44b34a484e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/mintech-test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/linux_amd64/gopkg.in/go-playground/validator.v8.a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/linux_amd64/gopkg.in/yaml.v2.a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/db.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/db_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/denisenkom/go-mssqldb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/erikstmartin/go-testdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/gin-contrib/sse" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/gin-gonic/gin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/go-sql-driver/mysql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/golang/protobuf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/jinzhu/gorm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/jinzhu/inflection" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/jinzhu/now" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/lib/pq" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/mattn/go-isatty" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/mattn/go-sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/ugorji/go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/golang.org/x/sys" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gopkg.in/go-playground/validator.v8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gopkg.in/yaml.v2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/handler/handler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/order.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/req.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/router/router.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/order.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/order_test.go" afterDir="false" />
-    </list>
+    <list default="true" id="87eed950-98db-46c3-979b-f44b34a484e6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,20 +48,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/handler/handler.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="103" column="48" selection-start-line="103" selection-start-column="48" selection-end-line="103" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/service/order.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-              <folding>
-                <element signature="e#17#42#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="194">
+              <caret line="100" column="14" lean-forward="true" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -603,10 +556,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/handler/handler.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="103" column="48" selection-start-line="103" selection-start-column="48" selection-end-line="103" selection-end-column="48" />
+        <state relative-caret-position="194">
+          <caret line="100" column="14" lean-forward="true" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
         </state>
       </provider>
     </entry>
