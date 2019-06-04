@@ -77,6 +77,7 @@ func UpdateOrder(c *gin.Context) {
 	if err != nil {
 		fmt.Println(err)
 		c.String(http.StatusInternalServerError,"service error. ")
+		return
 	}
 
 	c.String(http.StatusOK, "update success. ")
@@ -93,6 +94,7 @@ func Query(c *gin.Context) {
 	ret, err := service.QueryByCondition(&req.QueryCondition)
 	if err != nil {
 		c.String(http.StatusInternalServerError,"service error. ")
+		return
 	}
 
 	b, err := json.Marshal(ret)

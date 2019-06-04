@@ -122,7 +122,13 @@
   </component>
   <component name="GOROOT" path="/snap/go/current" />
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev-test" />
+      </map>
+    </option>
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
@@ -214,7 +220,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -343,7 +349,7 @@
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13628809" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13628809" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -356,7 +362,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32972974" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49806094" visible="true" weight="0.48108107" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49806094" visible="true" weight="0.48108107" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50193906" side_tool="true" weight="0.48756757" />
       <window_info anchor="bottom" id="Database Console" order="12" visible="true" weight="0.32972974" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -367,6 +373,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
