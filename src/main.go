@@ -2,7 +2,6 @@ package main
 
 import (
 	"db"
-	"fmt"
 	"router"
 )
 
@@ -11,9 +10,8 @@ func main () {
 	defer db.SqlDB.Close()
 
 	r := router.RegisterHandlers()
-	err := r.Run(":8000")
-	if err != nil {
-		fmt.Println(err)
+	if err := r.Run(":8000"); err != nil {
+		panic(err)
 	}
 }
 

@@ -19,10 +19,9 @@ func Upload(c *gin.Context) {
 
 	file, header, err := c.Request.FormFile("upload")
 	if err != nil {
-		c.String(http.StatusBadRequest, "Bad request")
+		c.String(http.StatusBadRequest, "Bad request. ")
 		return
 	}
-
 
 	filename := header.Filename
 	fmt.Println(file, err, filename)
@@ -47,23 +46,23 @@ func CreateOrder(c *gin.Context) {
 
 	if err:=c.BindJSON(&req); err != nil {
 		fmt.Println(err)
-		c.String(http.StatusNotFound, "param error:%s", err)
+		c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_FAIL, ErrorStr:err.Error()})
 		return
 	}
 
 	_, err := service.CreateOrder(&req.Order)
 	if err != nil {
-		c.String(http.StatusOK, "error:%s", err)
+		c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_FAIL, ErrorStr:err.Error()})
 		return
 	}
 
 	b, err := json.Marshal(req.Order)
 	if err != nil {
-		c.String(http.StatusOK, "error:%s", err)
+		c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_FAIL, ErrorStr:fmt.Sprintf("解析返回结果失败,error:%s", err)})
 		return
 	}
 
-	c.Data(http.StatusOK, "application/json", b)
+	c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_SUCCESS, Data:string(b)})
 
 	fmt.Println("create order success.")
 }
@@ -72,24 +71,24 @@ func QueryByOrderId(c *gin.Context) {
 	orderId := c.Param("order_id")
 
 	if len(strings.TrimSpace(orderId)) == 0 {
-		c.String(http.StatusOK,"orderId is nil. ", orderId)
+		c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_FAIL, ErrorStr:"orderId is nil."})
 		return
 	}
 
 	order, err := service.QueryByOrderId(orderId)
 	if err != nil {
 		fmt.Println(err)
-		c.String(http.StatusInternalServerError,"service error:%s ", err)
+		c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_FAIL, ErrorStr:err.Error()})
 		return
 	}
 
 	b, err := json.Marshal(order)
 	if err != nil {
-		c.String(http.StatusOK, "error:%s", err)
+		c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_FAIL, ErrorStr:fmt.Sprintf("解析返回结果失败,error:%s", err)})
 		return
 	}
 
-	c.Data(http.StatusOK, "application/json", b)
+	c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_SUCCESS, Data:string(b)})
 }
 
 func UpdateOrder(c *gin.Context) {
@@ -97,40 +96,41 @@ func UpdateOrder(c *gin.Context) {
 	if err:=c.BindJSON(&req); err != nil {
 		fmt.Println(err)
 		c.String(http.StatusNotFound, "param error:%s", err)
+		c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_FAIL, ErrorStr:fmt.Sprintf("param error:%s", err)})
 		return
 	}
 
 	err := service.UpdateOrder(&req.Order)
 	if err != nil {
 		fmt.Println(err)
-		c.String(http.StatusInternalServerError,"service error:%s ", err)
+		c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_FAIL, ErrorStr:err.Error()})
 		return
 	}
 
-	c.String(http.StatusOK, "update success. ")
+	c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_SUCCESS, Message:"update success."})
 }
 
 func Query(c *gin.Context) {
 	var req  model.OrderConditionReq
 	if err:=c.BindJSON(&req); err != nil {
 		fmt.Println(err)
-		c.String(http.StatusNotFound, "param error:%s", err)
+		c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_FAIL, ErrorStr:fmt.Sprintf("param error:%s", err)})
 		return
 	}
 
 	ret, err := service.QueryByCondition(&req.QueryCondition)
 	if err != nil {
-		c.String(http.StatusInternalServerError,"service error:%s ", err)
+		c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_FAIL, ErrorStr:err.Error()})
 		return
 	}
 
 	b, err := json.Marshal(ret)
 	if err != nil {
-		c.String(http.StatusOK, "error:%s", err)
+		c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_FAIL, ErrorStr:fmt.Sprintf("解析返回结果失败,error:%s", err)})
 		return
 	}
 
-	c.Data(http.StatusOK, "application/json", b)
+	c.JSON(http.StatusOK, &model.Result{STATUS:model.STATUS_SUCCESS, Data:string(b)})
 }
 
 
