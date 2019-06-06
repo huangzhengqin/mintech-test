@@ -7,37 +7,40 @@ import (
 )
 
 func TestOpenDB(t *testing.T) {
-	OpenDB()
+	d := OpenDB()
+	defer d.Close()
 }
 
 
 
-func TestInsertOrder(t *testing.T) {
-	OpenDB()
+func TestCreateOrder(t *testing.T) {
+	d := OpenDB()
+	defer d.Close()
 
-	id, err := InsertOrder(&model.Order{OrderId:"12344", Amount:11, FileUrl:"dfd", UserName:"zhangsan", Status:"good"})
+	order, err := NewDbManager(d).CreateOrder(&model.Order{OrderId:"144", Amount:11, FileUrl:"dfd", UserName:"zhangsan", Status:"good"})
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	fmt.Println("id:", id)
+	fmt.Println("id:", order)
 }
 
 
-func TestUpdateOrder(t *testing.T) {
-	OpenDB()
+func TestUpdateOrderById(t *testing.T) {
+	d := OpenDB()
 
-	err := UpdateOrder(&model.Order{OrderId:"11111", Amount:11114, FileUrl:"1111334", UserName:"11114", Status:"11114"})
+	err := NewDbManager(d).UpdateOrderById(&model.Order{OrderId:"124", Amount:11114, FileUrl:"1111334", UserName:"11114", Status:"11114"})
 	if err != nil {
 		t.Fatal(err)
 	}
 }
 
 
-func TestQueryByOrderId(t *testing.T) {
-	OpenDB()
+func TestGetOrderById(t *testing.T) {
+	d := OpenDB()
+	defer d.Close()
 
-	ret, err := QueryByOrderId("11111")
+	ret, err := NewDbManager(d).GetOrderById(&model.Order{OrderId:"124"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -47,10 +50,11 @@ func TestQueryByOrderId(t *testing.T) {
 }
 
 
-func TestQueryByCondition(t *testing.T) {
-	OpenDB()
+func TestGetOrderByCondition(t *testing.T) {
+	d := OpenDB()
+	defer d.Close()
 
-	ret, err := QueryByCondition(&model.QueryCondition{Key:"", LikeStr:"", Desc:true})
+	ret, err := NewDbManager(d).GetOrderByCondition(&model.QueryCondition{Key:"", LikeStr:"", Desc:true})
 	if err != nil {
 		t.Fatal(err)
 	}

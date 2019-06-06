@@ -14,5 +14,7 @@ type QueryCondition struct {
 	Key 			string		//查询字段
 	LikeStr			string		//关键字
 	Desc			bool		//是否使用降序
+	Page			int			//页码
+	PageSize		int			//每页显示数量
 }
 

@@ -6,11 +6,10 @@ import (
 )
 
 func main () {
-	db.OpenDB()
-	defer db.SqlDB.Close()
+	d := db.OpenDB()
+	defer d.Close()
 
-	r := router.RegisterHandlers()
-	if err := r.Run(":8000"); err != nil {
+	if err := router.NewService(d).New().Run(":8000"); err != nil {
 		panic(err)
 	}
 }
