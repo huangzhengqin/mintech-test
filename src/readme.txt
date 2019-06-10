@@ -1,4 +1,4 @@
-github:https://github.com/huangzhengqin/mintech-test
+github:https://github.com/hzq-qiyuan
 
 
 create table sql:
