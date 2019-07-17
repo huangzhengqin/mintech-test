@@ -6,7 +6,7 @@
 package service
 
 import (
-	"model"
+	"mintech-test/src/model"
 )
 
 type DbManager interface {

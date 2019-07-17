@@ -8,7 +8,7 @@ package db
 import (
 	"fmt"
 	"github.com/jinzhu/gorm"
-	"model"
+	"mintech-test/src/model"
 	"strings"
 )
 

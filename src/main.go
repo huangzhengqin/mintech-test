@@ -1,8 +1,8 @@
 package main
 
 import (
-	"db"
-	"router"
+	"mintech-test/src/db"
+	"mintech-test/src/router"
 )
 
 func main () {

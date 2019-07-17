@@ -2,7 +2,7 @@ github:https://github.com/hzq-qiyuan
 
 
 create table sql:
-create table dome_order (
+create table orders (
 	id int(11) NOT NULL AUTO_INCREMENT,
 	order_id varchar(30) DEFAULT NULL,
 	user_name varchar(30) DEFAULT NULL,

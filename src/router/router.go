@@ -1,14 +1,14 @@
 package router
 
 import (
-	"db"
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
-	"model"
+	"mintech-test/src/db"
+	"mintech-test/src/model"
+	"mintech-test/src/service"
 	"net/http"
-	"service"
 	"strings"
 )
 
@@ -65,7 +65,7 @@ func (s *Server) QueryById(c *gin.Context) {
 		return
 	}
 
-	order, err := s.ss.GetOrderById(&model.Order{OrderId:orderId})
+	order, err := s.ss.GetOrderById(&model.Order{OrderId: orderId})
 	if err != nil {
 		fmt.Println(err)
 		c.JSON(http.StatusOK, &model.Result{STATUS: model.STATUS_FAIL, ErrorStr: err.Error()})
